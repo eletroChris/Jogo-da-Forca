@@ -9,3 +9,4 @@ int enforcou(char palavraSecreta[],char chutes[],int chutesDados);
 int acertou(char palavraSecreta[], char chutes[],int chutesDados);
 void adicionaPalavra();
 int chutesErrados(char palavraSecreta[],char chutes[],int chutesDados);
+void verificaChuteRepetido(char chutes[26],int* chutesDados, char chute);

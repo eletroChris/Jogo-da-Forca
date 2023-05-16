@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
 #include "forca.h"
 
 
@@ -23,12 +24,7 @@ int jachutou(char letra,char chutes[],int chutesDados){
     return achou;
 }
 
-void chuta(char chutes[26],int* chutesDados){
-    char chute;
-    printf("Qual letra? ");
-    scanf(" %c",&chute);
-    
-    //Verifica se o jogador repetiu a letra que já foi chutada
+void verificaChuteRepetido(char chutes[26],int* chutesDados, char chute){
     int chuteRepetido=0;
     for(int i =0;i<strlen(chutes);i++){
         if(chute == chutes[i]){            
@@ -43,6 +39,18 @@ void chuta(char chutes[26],int* chutesDados){
         chutes[(*chutesDados)]=chute;
         (*chutesDados)++;
     }
+}
+
+void chuta(char chutes[26],int* chutesDados){
+    char chute;
+    printf("Qual letra? ");
+    scanf(" %c",&chute);
+    if(!isalpha(chute)){
+        printf(">>>>> Charactere inválido <<<<<\n");
+    }else{
+        chute=toupper(chute);
+        verificaChuteRepetido(chutes,chutesDados,chute);
+    } 
     
 }
 
